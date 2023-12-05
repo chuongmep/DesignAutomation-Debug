@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{849AABA4-EE35-4619-A264-3C26FB24371F}") = "DesignAutomationHandler2023", "DesignAutomationHandler2023\DesignAutomationHandler2023.csproj", "{D995EDC7-E67B-41D8-A730-1D1FD4792239}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D995EDC7-E67B-41D8-A730-1D1FD4792239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D995EDC7-E67B-41D8-A730-1D1FD4792239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D995EDC7-E67B-41D8-A730-1D1FD4792239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D995EDC7-E67B-41D8-A730-1D1FD4792239}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8413F779-04D2-49F8-AFB2-185E6E619603}
+	EndGlobalSection
+EndGlobal

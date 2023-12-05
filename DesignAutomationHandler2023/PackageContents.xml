@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage Name="RoomName" Description="Room Name" Author="Autodesk">
+    <CompanyDetails Name="Autodesk, Inc" Url="" Email="chuongpqvn@gmail.com"/>
+    <Components Description="Export Room Name">
+        <RuntimeRequirements SeriesMax="R2012" SeriesMin="R2024" Platform="Revit" OS="Win64"/>
+        <ComponentEntry LoadOnRevitStartup="True" LoadOnCommandInvocation="False" AppDescription="Export Room Name"
+                        ModuleName="./Contents/ExportRoomName.addin" Version="1.0.0"
+                        AppName="Export Room Name"/>
+    </Components>
+</ApplicationPackage>

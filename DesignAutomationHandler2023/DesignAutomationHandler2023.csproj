@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <OutputType>Library</OutputType>
+        <RootNamespace>DesignAutomationHandler</RootNamespace>
+        <AssemblyName>DesignAutomationHandler</AssemblyName>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <RevitVersion>2023</RevitVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="ExportRoomName.addin">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+            <SubType>Designer</SubType>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Chuongmep.Revit.Api.RevitAPI" Version="$(RevitVersion)">
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+        <PackageReference Include="Chuongmep.Revit.Api.RevitAPIUI" Version="$(RevitVersion)">
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
+        <PackageReference Include="Autodesk.Forge.DesignAutomation.Revit" Version="$(RevitVersion)"/>
+        <PackageReference Include="Microsoft.CSharp" Version="4.5.0"/>
+    </ItemGroup>
+    <PropertyGroup>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+    </ItemGroup>
+    <Target Name="CopyFiles" AfterTargets="CoreBuild" Condition="'$(Configuration)' == 'Debug'">
+        <ItemGroup>
+            <FilesToCopy Include="$(TargetDir)*.dll"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(ProjectDir)\ExportRoomName.bundle\Contents\"/>
+        <Copy SourceFiles="$(ProjectDir)PackageContents.xml" DestinationFolder="$(ProjectDir)\ExportRoomName.bundle\"/>
+        <Copy SourceFiles="$(ProjectDir)ExportRoomName.addin" DestinationFolder="$(ProjectDir)\ExportRoomName.bundle\Contents\"/>
+        <Copy SourceFiles="$(ProjectDir)PackageContents.xml" DestinationFolder="$(AppData)\Autodesk\ApplicationPlugins\ExportRoomName.bundle"/>
+        <Copy SourceFiles="$(ProjectDir)ExportRoomName.addin" DestinationFolder="$(AppData)\Autodesk\ApplicationPlugins\ExportRoomName.bundle\Contents"/>
+        <Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(AppData)\Autodesk\ApplicationPlugins\ExportRoomName.bundle\Contents"/>
+    </Target>
+    <Target Name="Compress" AfterTargets="CopyFiles" Condition="'$(Configuration)' == 'Debug'">
+        <Exec Command="&quot;C:\Program Files\7-Zip\7z.exe&quot; a -tzip &quot;$(ProjectDir)/DesignAutomation/ExportRoomName.zip&quot; &quot;$(ProjectDir)ExportRoomName.bundle\&quot;"/>
+    </Target>
+</Project>
